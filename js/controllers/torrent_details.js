@@ -23,8 +23,9 @@ kettu.TorrentDetails = function(transmission) {
     kettu.app.trigger('get-torrent-details', {id: id, callback: 'renderTorrentDetailsInView'});
 
     if(kettu.app.info_interval_id) { clearInterval(kettu.app.info_interval_id); }
-    kettu.app.info_interval_id = setInterval(
-      "kettu.app.trigger('get-torrent-details', {id: " + id + ", callback: 'updateTorrentDetailsInView'})",
+    kettu.app.info_interval_id = setInterval(function(){
+        kettu.app.trigger('get-torrent-details', {'id': id, 'callback': 'updateTorrentDetailsInView'});
+      },
       kettu.app.reloadInterval
     );
   });

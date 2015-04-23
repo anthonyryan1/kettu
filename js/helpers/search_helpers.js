@@ -1,6 +1,6 @@
 $.expr[":"].containsIgnoreCase = function(el, i, m) {
     var search = m[3];
-    return search ? eval("/" + search + "/i").test($(el).text()) : false;
+    return search ? new RegExp(search, 'i').test($(el).text()) : false;
 };
 
 kettu.SearchHelpers = {
